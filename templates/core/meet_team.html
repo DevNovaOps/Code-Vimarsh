@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block title %}Meet the Team - Code Vimarsh{% endblock %}
+
+{% block content %}
+{% load static %}
+<!-- Meet the Team Section -->
+<section class="team-page">
+    <div class="container">
+        <h1 class="section-title">Meet the Team</h1>
+        <p class="team-intro">Get to know the amazing people behind Code Vimarsh</p>
+        
+        <div class="team-grid-full">
+            {% for member in team_members %}
+            <div class="team-card-full">
+            {% if member.photo %}
+                <div class="team-photo-container">
+                <img src="{{ member.photo.url }}" alt="{{ member.name }}" class="team-photo">
+                </div>
+            {% else %}
+                <div class="team-photo-container">
+                {% if member.gender == 'F' %}
+                    <img src="{% static 'images/fe.png' %}" alt="{{ member.name }}" class="team-photo">
+                    {% else %}
+                    <img src="{% static 'images/men.png' %}" alt="{{ member.name }}" class="team-photo">
+                {% endif %}
+                {% endif %}
+                </div>
+           
+            <div class="team-info">
+                <h3 class="team-name">{{ member.name }}</h3>
+                <div class="team-role-badge">{{ member.get_role_display }}</div>
+                {% if member.bio %}
+                <p class="team-bio">{{ member.bio }}</p>
+                {% endif %}
+            </div>
+            </div>
+            {% empty %}
+            <div class="no-team">
+            <p>Team information coming soon!</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+

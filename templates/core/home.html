@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            {% load static %}
+            <img src="{% static 'images/logo.webp' %}" alt="Code Vimarsh Logo" class="hero-logo">
+            <h1 class="hero-title">Code Vimarsh</h1>
+            <p class="hero-subtitle">Where Innovation Meets Code</p>
+            <p class="hero-description">
+                A technical club dedicated to fostering innovation, collaboration, and excellence in software development.
+                Join us in building the future, one line of code at a time.
+            </p>
+            {% if user.is_authenticated %}
+                <div class="member-status">
+                    <span class="badge-glow">✨ Registered Member</span>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Us</h2>
+        <div class="about-content">
+            <div class="about-card">
+                <h3>Our Mission</h3>
+                <p>
+                  To empower developers through hands-on learning, real-world projects, and a collaborative community.
+                  We bridge the gap between academic knowledge and industry practices, fostering a culture of continuous
+                  improvement.
+                </p>
+            </div>
+            <div class="about-card">
+                <h3>What We Do</h3>
+                <p>
+                Code Vimarsh is MSU's premier coding club, dedicated to mastering Data Structures & Algorithms and Web
+                Development. We are a collective of passionate coders, designers, and innovators. We don't just consume
+                technology; we create it.
+                </p>
+            </div>
+            <div class="about-card">
+                <h3>Join Us</h3>
+                <p>
+                    Whether you're a beginner or an experienced developer, Code Vimarsh welcomes you. 
+                    Sign up to stay updated with our events and become part of our growing community.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Upcoming Events Section -->
+<section id="events" class="events">
+    <div class="container">
+        <h2 class="section-title">Upcoming Events</h2>
+        <div id="events-container" class="events-grid">
+            <!-- Events will be loaded dynamically via JavaScript -->
+            <div class="loading">Loading events...</div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
