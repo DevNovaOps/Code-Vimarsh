@@ -94,6 +94,46 @@ body::before {
     align-items: center;
 }
 
+/* Hamburger Menu - Hidden by default (desktop) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    gap: 5px;
+    z-index: 1001;
+    position: relative;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--orange);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 5px var(--glow-orange);
+}
+
+.hamburger:hover span {
+    background: var(--tan);
+    box-shadow: 0 0 10px var(--glow-tan);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 8px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
 .nav-link {
     color: var(--text-primary);
     text-decoration: none;
@@ -720,10 +760,57 @@ section {
 }
 
 /* Responsive Design */
+/* Desktop: Keep original horizontal navigation (default styles above) */
+
+/* Mobile: Hamburger menu */
 @media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
     .nav-menu {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 280px;
+        height: 100vh;
+        background: rgba(26, 26, 26, 0.98);
+        backdrop-filter: blur(20px);
         flex-direction: column;
-        gap: 10px;
+        gap: 0;
+        align-items: flex-start;
+        padding: 80px 30px 30px;
+        transition: right 0.3s ease;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+        border-left: 2px solid var(--orange);
+        z-index: 1000;
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        right: 0;
+    }
+
+    .nav-menu li {
+        width: 100%;
+        border-bottom: 1px solid rgba(240, 165, 41, 0.1);
+    }
+
+    .nav-menu li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 15px 0;
+        text-align: left;
+    }
+
+    .member-badge {
+        display: block;
+        padding: 15px 0;
+        width: 100%;
     }
 
     .hero-title {

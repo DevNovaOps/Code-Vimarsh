@@ -2,7 +2,10 @@
 Management command to load initial data (Demo Day event and team members).
 Run with: python manage.py load_initial_data
 """
+import os
+import shutil
 from django.core.management.base import BaseCommand
+from django.conf import settings
 from core.models import Event, TeamMember
 
 
