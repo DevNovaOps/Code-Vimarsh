@@ -108,8 +108,6 @@ ALLOWED_HOSTS = [
     "code-vimarsh-production.up.railway.app"
 ]
 
-
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
@@ -142,10 +140,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Django uses sessions by default for authentication
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Store sessions in database
 SESSION_COOKIE_AGE = 1209600  # 2 weeks (in seconds)
-SESSION_COOKIE_SECURE = False  # Set to True in production with HTTPS
-SESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript access to session cookie
+# Set to True in production with HTTPSSESSION_COOKIE_HTTPONLY = True  # Prevent JavaScript access to session cookie
 SESSION_COOKIE_SAMESITE = 'Lax'  # CSRF protection
 SESSION_SAVE_EVERY_REQUEST = False  # Only save session when modified
+CSRF_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
 # Login URLs
 LOGIN_URL = '/login/'
