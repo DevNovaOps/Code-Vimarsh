@@ -1,0 +1,2 @@
+release: python manage.py migrate
+web: gunicorn Code_Vimarsh.wsgi:application --bind 0.0.0.0:$PORT
